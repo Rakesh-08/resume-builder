@@ -1,0 +1,174 @@
+.BigContainer{
+    background-image: url("https://previews.123rf.com/images/clairev/clairev1308/clairev130800159/21869575-autumn-theme-background.jpg");
+
+    position: absolute;
+    left:0;
+    right: 0;
+    top: 0;
+    opacity: 0.9;
+   
+     background-size: cover;
+}
+form{
+    padding: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+input{
+    margin-bottom: 15px;
+    padding:10px 20px ;
+    border-radius: 3px;
+    outline: none;
+    border:1px solid #ddd;
+
+}
+input:focus{
+    background-color: rgb(44, 39, 39);
+    color:white;
+}
+label{
+    font-style: oblique;
+    color:rgb(28, 24, 24);
+    font-weight: 900;
+    font-size: 1.2em;
+}
+h3{
+    margin: 15px 0;
+    
+}
+
+.submit {
+    padding: 15px;
+    margin-top: 9px;
+    cursor: pointer;
+    outline: none;
+    background-color: #4d0e6a;
+    border: none;
+    color:rgb(177, 170, 170);
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    letter-spacing: 8px;
+}
+button:active{
+    transform: scale(0.9);
+}
+
+.app{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:30px;
+}
+
+.app>p{
+   
+    margin-bottom: 30px;
+    font-style: italic;
+    font-weight: 900;
+    color:red;
+    text-decoration:underline;
+    
+}
+.nestedContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+ .work-exp{
+        display: flex;
+    }
+
+@media screen and (max-width:379px){
+    .nestedContainer{
+        display: inline;
+    }
+   
+}
+
+.companies{
+    display: flex;
+    flex-direction: column;
+    width: 39%;
+    margin: 4px;
+}
+
+.currentInput{
+    width: 95%;
+}
+
+#photo{
+    width:50%;
+}
+.exp{
+     margin-right: 5px;
+    color:black;
+    width: 5em;
+    height:2.5em;
+    border:none;
+    border-radius: 8%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#addBtn{
+    background-color: rgb(51, 229, 51);
+   
+    
+}
+
+#deleteBtn{
+    background-color: red;
+}
+
+.container{
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.header{
+    width: 80%;
+    margin: 0 auto;
+    min-height: 10vh;
+   background-color:red;
+   padding: 30px;
+   border-radius: 3px 3px 0 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.resumeTitle{
+    opacity: 0.8;
+}
+.headerTitle{
+    margin-bottom: 15px;
+}
+
+.resumeImage{
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.resumeBody{
+    width: 80%;
+    margin:0 auto;
+    padding: 30px;
+    min-height: 80vh;
+    border:1px solid #e0e0ea;
+}
+.resumeBodyTitle{
+    margin-bottom: 5px;
+}
+.resumeBodyContent{
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+
