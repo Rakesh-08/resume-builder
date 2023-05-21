@@ -16,7 +16,7 @@ let database = [];
 
 
 const config = new Configuration({
-    apiKey: "sk - Yj25EHHye53TGMImQiXRT3BlbkFJMYJvfD8h1mEIdOIQk6C7"
+    apiKey: "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"
 })
 const openai = new OpenAIApi(config);
 
@@ -55,26 +55,27 @@ expressApp.get("/Home", (req, res) => {
 
 
 expressApp.post("/resume/create", upload.single("headshotImage"), async (req, res) => {
-    
+
     const { fullName,
         currentPosition,
         currentLength,
         currentTechnologies,
         workHistory,
     } = req.body;
-console.log('first log')
-     const workArray = JSON.parse(workHistory);
-    
+
+    const workArray = JSON.parse(workHistory);
+
+
     const newEntry = {
         id: generateID(),
         fullName,
-        image_url: `http://localhost:8080/uploads/${req.file.filename}`,
+       image_url: `http://localhost:8080/uploads/${req.file.filename}`,
         currentPosition,
         currentLength,
         currentTechnologies,
         workHistory: workArray
     }
-    console.log('it jumps block')
+
 
     const remainderText = () => {
         let stringText = "";
@@ -85,7 +86,7 @@ console.log('first log')
     }
 
     const prompt1 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n I write in the technologies: ${currentTechnologies} . can you write a 100 words description for the top of the resume (first person writing)?`;
-    
+
     const prompt2 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n I write in the technologies: ${currentTechnologies} . can you write a 10 words  for a resume on what I am good at? `;
 
     const prompt3 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n During my years I worked at ${workArray.length} companies . ${remainderText()} \n Can you write me 50 words for each company separated in numbers of my succession in the  company (in first person)?`;
@@ -94,15 +95,15 @@ console.log('first log')
     const keypoints = await GPTFunction(prompt2);
     const jobResponsibilities = await GPTFunction(prompt3);
 
-    console.log('second log')
+
     const chatgptData = { objective, keypoints, jobResponsibilities };
 
-    console.log(chatgptData);
- 
+    
+
     const data = { ...newEntry, ...chatgptData };
     database.push(data);
 
-    
+
     res.json({
         message: "Request successfull!",
         data,

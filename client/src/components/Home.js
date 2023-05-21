@@ -27,7 +27,7 @@ export default function Home({setResult}) {
         formData.append("currentTechnologies", currentTechnologies);
         formData.append("workHistory", JSON.stringify(jobInfo));
 
-        
+       
         axios
             .post("http://localhost:8080/resume/create", formData, {})
             .then((res) => {
