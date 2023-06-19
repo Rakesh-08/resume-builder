@@ -1,8 +1,11 @@
-import react, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import WorkExperience from "./WorkExperience";
+import Templates from "./cvTemplates/templates";
+import Navbar from "../components/navbar/Navbar"
+
 
 export default function Home({setResult}) {
     const [fullName, setFullName] = useState('');
@@ -46,9 +49,17 @@ export default function Home({setResult}) {
         return <Loading />
     }
     return (
-        <div className='app'>
-            <h1>Resume Builder</h1>
-            <p> Generate a resume with AI in few seconds</p>
+        <div className="homeContainer">
+            <Navbar/>
+            
+            <div className='resumeContainer app px-4'>
+            <div className="leftContainer">
+              <Templates/>
+            </div>
+                <div className="rightContainer">
+                    <h1 style={{ textAlign: "center" }}>Resume Builder</h1>
+                    <p> Generate a resume with AI in few seconds</p>
+
             <form
                 onSubmit={handleFormSubmit}
                 method='POST'
@@ -91,7 +102,9 @@ export default function Home({setResult}) {
 
 
                 <button className='submit'> Create {"     "} Resume </button>
-            </form>
+                    </form>
+                </div>
+                </div>
         </div>
     )
 

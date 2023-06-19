@@ -1,0 +1,18 @@
+.navbar{
+    padding:1em;
+    margin-bottom: 1em;
+    height: 8vh;
+    position: sticky;
+    top:1vh;
+}
+
+.authBtn{
+  background: transparent;
+  border:none;
+  color:whitesmoke
+
+}
+.active{
+    background-color: blue;
+    border-radius: 20%;
+}

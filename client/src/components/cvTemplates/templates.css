@@ -1,0 +1,34 @@
+.tempContainer{
+    border: 1px solid rgb(228, 217, 198);
+    height: 89vh;
+    border-radius: 2%;
+    padding:1em;
+    color:black;
+   background-color:  rgb(231, 226, 226);
+ 
+}
+
+div[class*="template"]{
+
+    height: 7.4em;
+    width:  100%;
+    border-radius: 5%;
+}
+
+div[class*="img"]{
+    height: 2em;
+    width: 2em;
+    
+    border-radius: 50%;
+
+}
+
+div[class*="line"]{
+    width: 5em;
+    max-height: 0.4em;
+}
+
+div[class*="B-line"]{
+    height: 2em;
+    background-color: brown;
+}

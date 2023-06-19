@@ -1,13 +1,15 @@
 .BigContainer{
-    background-image: url("https://previews.123rf.com/images/clairev/clairev1308/clairev130800159/21869575-autumn-theme-background.jpg");
-
+    /* background-image: url("https://previews.123rf.com/images/clairev/clairev1308/clairev130800159/21869575-autumn-theme-background.jpg");
+*/
     position: absolute;
     left:0;
     right: 0;
     top: 0;
     opacity: 0.9;
    
-     background-size: cover;
+     background-size: cover; 
+     background-color:rgb(24, 6, 30);
+     color:white
 }
 form{
     padding: 10px;
@@ -15,7 +17,7 @@ form{
     display: flex;
     flex-direction: column;
 }
-input{
+ .rightContainer input{
     margin-bottom: 15px;
     padding:10px 20px ;
     border-radius: 3px;
@@ -27,11 +29,9 @@ input:focus{
     background-color: rgb(44, 39, 39);
     color:white;
 }
-label{
+ .rightContainer label{
     font-style: oblique;
-    color:rgb(28, 24, 24);
-    font-weight: 900;
-    font-size: 1.2em;
+     font-size: 1.2em;
 }
 h3{
     margin: 15px 0;
@@ -58,18 +58,26 @@ button:active{
 .app{
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding:30px;
 }
 
-.app>p{
-   
+
+
+.leftContainer{
+    flex:0.2;
+    height:80vh;
+    
+    
+}
+.rightContainer{
+    flex:0.8;
+    padding:3em
+}
+
+ .homeContainer p{
+   text-align: center;
     margin-bottom: 30px;
     font-style: italic;
     font-weight: 900;
-    color:red;
     text-decoration:underline;
     
 }
@@ -131,7 +139,7 @@ button:active{
 
 .container{
     min-height: 100vh;
-    padding: 30px;
+    padding: 5vw;
     
 }
 

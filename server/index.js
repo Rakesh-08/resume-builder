@@ -6,6 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const { Configuration, OpenAIApi } = require("openai");
 const { v4: generateID } = require("uuid");
+let secretConfig= require("./secretkeys")
 
 expressApp.use(express.urlencoded({ extended: true }));
 expressApp.use(express.json());
@@ -16,7 +17,7 @@ let database = [];
 
 
 const config = new Configuration({
-    apiKey: "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"
+    apiKey:secretConfig.openAiKey
 })
 const openai = new OpenAIApi(config);
 
@@ -76,7 +77,7 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
         workHistory: workArray
     }
 
-
+    
     const remainderText = () => {
         let stringText = "";
         for (let i = 0; i < workArray.length; i++) {
@@ -85,6 +86,7 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
         return stringText;
     }
 
+   
     const prompt1 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n I write in the technologies: ${currentTechnologies} . can you write a 100 words description for the top of the resume (first person writing)?`;
 
     const prompt2 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n I write in the technologies: ${currentTechnologies} . can you write a 10 words  for a resume on what I am good at? `;
@@ -94,7 +96,7 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
     const objective = await GPTFunction(prompt1);
     const keypoints = await GPTFunction(prompt2);
     const jobResponsibilities = await GPTFunction(prompt3);
-
+    
 
     const chatgptData = { objective, keypoints, jobResponsibilities };
 
