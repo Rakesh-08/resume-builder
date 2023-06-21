@@ -1,7 +1,7 @@
 import react, {useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home"
-import Resume from "./components/Resume"
+import Resume from "./components/Resumes/Resume"
 import LoginComponent from "./components/loginPage/loginComponent";
 import "./index.css"
 

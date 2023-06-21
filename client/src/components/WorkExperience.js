@@ -3,70 +3,87 @@ import react, { useState } from "react";
 
 export default function WorkExperience({ jobInfo, setJobInfo, company, index }) {
 
-    // update the state with user input
-    const handleAddCompany = () => {
-        let lastObject = jobInfo[jobInfo.length - 1]
-        if (lastObject.companyName == "" || lastObject.position == "") {
-            return alert("please enter valid input")
-        }
+   
 
-        if (jobInfo.length === 4) {
-            setJobInfo([...jobInfo]);
-            console.log(jobInfo)
-            return;
+    let addExperienceInputField = (e) => {
+        e.preventDefault()
+        let temp = [...jobInfo]
+        if (temp.length == 4) {
+            return
         }
 
 
-        setJobInfo([...jobInfo, { companyName: '', position: "" }])
+        if (temp[0] == "") {
+            temp.length = 0
+        } else {
+           
+            let element = temp[temp.length - 1]
+            console.log(element)
+            if (!(element.companyName && element.position)) {
+              
+                alert("please fill previous experience field first")
+                return
+            }
+        }
+        temp.push({ companyName: "", position: "" })
+        setJobInfo(temp)
     }
+    
 
 
     // remove a selected item from the list
-    const handleRemoveCompany = (index) => {
-        const list = [...jobInfo];
-        list.splice(index, 1);
-        setJobInfo(list)
+
+    let removeExperience = (e) => {
+        e.preventDefault()
+
+        let temp = [...jobInfo]
+        temp.splice(index, 1)
+        if (temp.length == 0) {
+            temp.push("")
+        }
+        setJobInfo(temp)
+
     }
+
 
     // update an item within the list
-    const handleUpdateCompany = (e, index) => {
-        const { name, value } = e.target;
-        const list = [...jobInfo];
-        list[index][name] = value;
-
-
-        setJobInfo(list)
+    let updateExperience = (e) => {
+        let temp = [...jobInfo]
+        temp[index][e.target.name] = e.target.value
+        setJobInfo(temp)
     }
     return (
-        <div className='nestedContainer '>
-            <div className='work-exp'>
-                <div className='companies'>
-                    <label htmlFor='companyName'>Company Name</label>
+        <div>
+            {jobInfo[0].companyName!==undefined &&
+                <div className='nestedContainer '>
+                    <div className='work-exp'>
+                        <div className='companies'>
+                            <label htmlFor='companyName'>Company Name</label>
 
-                    <input type='text' name='companyName' value={jobInfo[index].companyName} onChange={(e) => handleUpdateCompany(e, index)} />
-                </div>
+                            <input required type='text' name='companyName' value={company.companyName} onChange={updateExperience} />
+                        </div>
 
-                <div className='companies'>
-                    <label htmlFor='position'>Position held</label>
+                        <div className='companies'>
+                            <label htmlFor='position'>Position held</label>
 
-                    <input type='text' name='position' value={jobInfo[index].position} onChange={(e) => handleUpdateCompany(e, index)} />
-                </div>
+                            <input required type='text' name='position' value={company.position} onChange={updateExperience} />
+                        </div>
+
+                    </div>
+
+
+                    <div className='btn_group'>
+                        <button onClick={(e) => removeExperience(e, company.companyName)} style={{ backgroundColor: "red" }} className="p-1 mx-3 rounded-2 border-0" >delete</button>
+                    </div>
+
+                </div>}
+           
+            <div>
+                {jobInfo.length-1== index && index<3 &&<button onClick={addExperienceInputField} style={{ backgroundColor: "green" }} className="p-1 mx-4 rounded-2 border-0" >Add</button>
+
+                }
+
             </div>
-
-            <div className='btn_group'>
-                {jobInfo.length - 1 === index && jobInfo.length <= 4 && (
-                    <button className="exp" id='addBtn' onClick={handleAddCompany}>
-                        Add
-                    </button>
-                )}
-                {jobInfo.length > 1 && (jobInfo.length - 1 !== index || jobInfo.length == 4) && (
-                    <button className="exp" id='deleteBtn' onClick={() => handleRemoveCompany(index)}>
-                        delete
-                    </button>
-                )}
-
-            </div>
-
 
         </div>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./loginComponent.css";
 import authApiCall from "../apiCalls/auth";
-
+import { AuthContextValue } from "../authContext/AuthContext"
 let signUpapi = "/crm/api/v1/auth/signup";
 let signInapi = "/crm/api/v1/auth/signin";
 
@@ -18,10 +18,13 @@ let defaultPasswordVisibility={type:"password",class:"fa-eye-slash"}
 
 export default function LoginComponent() {
   let [authInfo, setAuthInfo] = useState(initialState);
-  let [showSignup, setShowSignup] = useState(false);
   let [resMsg, setResMsg] = useState({
     message: "",color:""});
   let [eyeConfig,setEyeConfig]= useState(defaultPasswordVisibility)
+
+
+  let { showSignup, setShowSignup }=  AuthContextValue()
+  
 
   let signup = (e) => {
     e.preventDefault();
@@ -43,7 +46,11 @@ export default function LoginComponent() {
     }
 
     authApiCall(signInapi, credential)
-      .then((data) => {
+      .then((res) => {
+        let data = res.data
+          if(data.accessToken){
+            localStorage.setItem("resumeToken",data.accessToken)
+        }
         
          setResMsg({ message: "Login successfully", color: "text-success" });
         setAuthInfo(initialState);
@@ -71,7 +78,7 @@ export default function LoginComponent() {
   }
 
   return (
-    <div className="bg-info vh-100 d-flex justify-content-center align-items-center">
+    <div className="bg-dark vh-100 d-flex justify-content-center align-items-center">
       <div className="card  p-5  form-box rounded-4">
         <h3 className="my-4 text-center">{showSignup ? "Sign Up" : "Login"}</h3>
 

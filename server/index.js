@@ -6,7 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const { Configuration, OpenAIApi } = require("openai");
 const { v4: generateID } = require("uuid");
-let secretConfig= require("./secretkeys")
+let secretConfig = require("./secretkeys")
 
 expressApp.use(express.urlencoded({ extended: true }));
 expressApp.use(express.json());
@@ -17,7 +17,7 @@ let database = [];
 
 
 const config = new Configuration({
-    apiKey:secretConfig.openAiKey
+    apiKey: secretConfig.openAiKey
 })
 const openai = new OpenAIApi(config);
 
@@ -70,37 +70,38 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
     const newEntry = {
         id: generateID(),
         fullName,
-       image_url: `http://localhost:8080/uploads/${req.file.filename}`,
+        image_url: `http://localhost:8080/uploads/${req.file.filename}`,
         currentPosition,
         currentLength,
         currentTechnologies,
         workHistory: workArray
     }
 
-    
+
     const remainderText = () => {
         let stringText = "";
         for (let i = 0; i < workArray.length; i++) {
-            stringText += `${workArray[i].CompanyName} as a ${workArray[i].position}`
+            stringText += `\n ${workArray[i].companyName
+                } as a ${workArray[i].position} `
         }
         return stringText;
     }
 
-   
-    const prompt1 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n I write in the technologies: ${currentTechnologies} . can you write a 100 words description for the top of the resume (first person writing)?`;
 
-    const prompt2 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n I write in the technologies: ${currentTechnologies} . can you write a 10 words  for a resume on what I am good at? `;
+    const prompt1 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition} (${currentLength} years).\n I write in the technologies: ${currentTechnologies} . can you write a 50 words description for the top of the resume(first person writing) ? `;
 
-    const prompt3 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition}(${currentLength} years). \n During my years I worked at ${workArray.length} companies . ${remainderText()} \n Can you write me 50 words for each company separated in numbers of my succession in the  company (in first person)?`;
+    const prompt2 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition} (${currentLength} years).\n I write in the technologies: ${currentTechnologies} . can you write a 10 words  for a resume on what I am good at ? `;
+
+    const prompt3 = `I am writing a resume, my details are \n name: ${fullName} \n role: ${currentPosition} (${currentLength} years).\n During my years I worked at ${workArray.length} companies.${remainderText()} \n Can you write me 30 words for each company separated in numbers of my succession in the  company(in first person) ? `;
 
     const objective = await GPTFunction(prompt1);
     const keypoints = await GPTFunction(prompt2);
     const jobResponsibilities = await GPTFunction(prompt3);
-    
+
 
     const chatgptData = { objective, keypoints, jobResponsibilities };
 
-    
+
 
     const data = { ...newEntry, ...chatgptData };
     database.push(data);

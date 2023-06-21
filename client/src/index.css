@@ -1,90 +1,92 @@
 .BigContainer{
-    /* background-image: url("https://previews.123rf.com/images/clairev/clairev1308/clairev130800159/21869575-autumn-theme-background.jpg");
-*/
-    position: absolute;
-    left:0;
-    right: 0;
-    top: 0;
-    opacity: 0.9;
    
      background-size: cover; 
      background-color:rgb(24, 6, 30);
      color:white
-}
-form{
-    padding: 10px;
-    width: 80%;
+ }
+ 
+.app{
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
 }
+ .leftContainer{
+    flex:0.2;
+    height:80vh;
+    
+
+}
+.rightContainer{
+    flex:0.8;
+}
+
  .rightContainer input{
     margin-bottom: 15px;
     padding:10px 20px ;
     border-radius: 3px;
     outline: none;
+   
     border:1px solid #ddd;
 
+}
+form{
+   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 input:focus{
     background-color: rgb(44, 39, 39);
     color:white;
 }
  .rightContainer label{
-    font-style: oblique;
-     font-size: 1.2em;
+     color:#837d7d;
+     font-size: 1em;
 }
 h3{
     margin: 15px 0;
+    font-size: 1.1em;
     
 }
 
 .submit {
-    padding: 15px;
-    margin-top: 9px;
+   
+    display: flex;
+    justify-content: center;
+   
+}
+.submit button{
+    background-color: #d3e168; 
+    padding: 10px; 
     cursor: pointer;
     outline: none;
-    background-color: #4d0e6a;
     border: none;
-    color:rgb(177, 170, 170);
+    color:rgb(41, 37, 37);
     font-size: 16px;
     font-weight: bold;
     border-radius: 3px;
-    letter-spacing: 8px;
+    margin-top: 1em;
+    width: 10em;
+
+
 }
 button:active{
     transform: scale(0.9);
 }
 
-.app{
-    min-height: 100vh;
-    display: flex;
-}
 
-
-
-.leftContainer{
-    flex:0.2;
-    height:80vh;
-    
-    
-}
-.rightContainer{
-    flex:0.8;
-    padding:3em
-}
-
- .homeContainer p{
+  .homeContainer p{
    text-align: center;
     margin-bottom: 30px;
     font-style: italic;
-    font-weight: 900;
-    text-decoration:underline;
+    font-weight: 400;
+    color:rgb(233, 135, 15)
     
 }
 .nestedContainer{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
 }
  .work-exp{
@@ -127,14 +129,14 @@ button:active{
     font-weight: bold;
 }
 
-#addBtn{
-    background-color: rgb(51, 229, 51);
-   
-    
-}
 
 #deleteBtn{
-    background-color: red;
+    background-color: red
+}
+
+.footer{
+    height: 90vh;
+    background-color: rgb(142, 67, 67);
 }
 
 .container{
@@ -190,4 +192,4 @@ button:active{
     margin-bottom: 30px;
 }
 
-
+ 

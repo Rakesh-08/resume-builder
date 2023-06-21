@@ -1,16 +1,18 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom"
 import "./Navbar.css"
+import { AuthContextValue } from "../authContext/AuthContext"
 
 export default function Navbar() {
     const navigateTo = useNavigate();
     const [login, setLogin] = useState(true);
+    let { setShowSignup }= AuthContextValue()
     
 
     let loginRoute = () => {
 
         if (login === true) {
-            alert("working")
+            setShowSignup(false)
             navigateTo("/auth/login")
             return
         }
@@ -21,6 +23,11 @@ export default function Navbar() {
 
     let signupRoute = () => {
         setLogin(false)
+
+        if (login == false) {
+            setShowSignup(true)
+            navigateTo("/auth/login")
+        }
         
     }
 
