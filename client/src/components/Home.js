@@ -154,9 +154,9 @@ setLoading(false)
                     <div className ="d-flex justify-content-around">
                     <div className=" f-note  w-25 p-4">
                         <h6>Terms and conditions </h6>
-                        <h6>Terms and conditions </h6>
-                        <h6>Terms and conditions </h6>
-                        <h6>Terms and conditions </h6>
+                        <h6>About us </h6>
+                        <h6>contact details </h6>
+                        <h6>Pricing  </h6>
                     </div>
                     <div className=" f-note  w-25 p-4">
                         <h6>Terms and conditions </h6>

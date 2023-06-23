@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./loginComponent.css";
 import authApiCall from "../apiCalls/auth";
 import { AuthContextValue } from "../authContext/AuthContext"
@@ -17,29 +18,35 @@ let initialState = {
 let defaultPasswordVisibility={type:"password",class:"fa-eye-slash"}
 
 export default function LoginComponent() {
+  let NavigateTo = useNavigate();
   let [authInfo, setAuthInfo] = useState(initialState);
   let [resMsg, setResMsg] = useState({
     message: "",color:""});
   let [eyeConfig,setEyeConfig]= useState(defaultPasswordVisibility)
-
+  let [spinner, setSpinner] = useState(false);
 
   let { showSignup, setShowSignup }=  AuthContextValue()
   
 
   let signup = (e) => {
     e.preventDefault();
-
+ 
+    setSpinner(true)
     authApiCall(signUpapi, authInfo)
       .then((res) => {
+         setSpinner(false);
          setResMsg({ message: "sign up successfully" , color:"text-success"});
          
       })
       .catch((err) =>   setResMsg({ message: "sign up failed ! error occurred" , color:"text-danger"}));
    
+   
   };
 
   let login = (e) => {
     e.preventDefault();
+    setSpinner(()=>true)
+ 
     let credential = {
       userId: authInfo.userId,
       password:authInfo.password
@@ -49,16 +56,18 @@ export default function LoginComponent() {
       .then((res) => {
         let data = res.data
           if(data.accessToken){
-            localStorage.setItem("resumeToken",data.accessToken)
+            localStorage.setItem("resumeToken", data.accessToken);
+
+            NavigateTo("/")
         }
-        
-         setResMsg({ message: "Login successfully", color: "text-success" });
         setAuthInfo(initialState);
       })
       .catch((err) => {
         console.log(err)
+        setSpinner(false)
          setResMsg({ message: "Login Failed! error occurred", color: "text-danger" });
       })
+   
    
     
   };
@@ -156,20 +165,24 @@ export default function LoginComponent() {
                 }
                 placeholder="min 8 characters"
                 required
-              />
-          
-                {" "}
-                <i className={`fa ${eyeConfig.class}`} id="togglePassword" onClick={togglePasswordvisibility}></i>
-             
+              />{" "}
+              <i
+                className={`fa ${eyeConfig.class}`}
+                id="togglePassword"
+                onClick={togglePasswordvisibility}
+              ></i>
             </div>
 
-           
             <button
               type="submit"
               className="my-5 w-25 bg-primary text-white border-0 rounded-1 "
             >
               {showSignup ? "Submit" : "Login"}
             </button>
+            {spinner && <div className="spinner-border " role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>}
+            
           </form>
         </div>
 
@@ -181,9 +194,9 @@ export default function LoginComponent() {
             <button
               onClick={() => {
                 setShowSignup(!showSignup);
-                setResMsg("")
-                setEyeConfig(defaultPasswordVisibility)
-                setAuthInfo(initialState)
+                setResMsg("");
+                setEyeConfig(defaultPasswordVisibility);
+                setAuthInfo(initialState);
               }}
               className=" toggleBtn"
             >
@@ -191,7 +204,7 @@ export default function LoginComponent() {
             </button>
           </p>
         </div>
-        <h6 className={`${resMsg.color} text-center`} >{resMsg.message}</h6>
+        <h6 className={`${resMsg.color} text-center`}>{resMsg.message}</h6>
       </div>
     </div>
   );
