@@ -7,9 +7,16 @@ let initialState = { one: "", two: "", three: "", four: "" }
 export default function AuthContext({ children }) {
     let [showSignup, setShowSignup] = useState(false);
     let [selectedTemplate, setSelectedTemplate] = useState(initialState)
+   
+    let active= "one"
+
+    Object.keys(selectedTemplate).map(i => {
+        if (selectedTemplate[i] === "selected")
+            active = i;
+    })
 
     return (
-        <authContext.Provider value={{ showSignup, setShowSignup, selectedTemplate, setSelectedTemplate, initialState }}>
+        <authContext.Provider value={{ showSignup, setShowSignup, selectedTemplate, setSelectedTemplate, initialState ,active }}>
             {children}
         </authContext.Provider>
 

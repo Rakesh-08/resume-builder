@@ -134,9 +134,26 @@ button:active{
     background-color: red
 }
 
+ .quote:hover{
+    cursor: pointer;
+    border:1px solid gray;
+    color:rgb(225, 176, 31);
+    font-style: oblique;
+}
 .footer{
-    height: 90vh;
-    background-color: rgb(142, 67, 67);
+    background-color: rgb(114, 110, 110);
+    height: 30%;
+    margin-top: 4em;
+}
+
+.f-note h6{
+    font-size: 0.8em;
+    color:rgb(23, 19, 19)
+}
+.f-note h6:hover{
+    text-decoration: underline;
+    color:blue;
+    cursor: pointer;
 }
 
 .container{

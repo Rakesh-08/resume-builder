@@ -7,21 +7,9 @@ import { AuthContextValue } from "../authContext/AuthContext"
 
 export default function Resume({ result }) {
 
-    let { selectedTemplate } = AuthContextValue()
+    const { active } = AuthContextValue()
 
     let token = localStorage.getItem("resumeToken")
-
-    let key = "one";
-
-    Object.keys(selectedTemplate).map(i => {
-        if (selectedTemplate[i] == "selected")
-            key = i;
-    })
-
-    if (key !== "one" && !token) {
-        alert("please sign up first to check these templates")
-        return;
-    }
 
 
     if (JSON.stringify(result) === "{}") {
@@ -30,10 +18,10 @@ export default function Resume({ result }) {
 
     return (
         <div>
-            <Default result={result} />
-            {token && <CenterFaced result={result} />}
-            {token && <LeftFaced result={result} />}
-            {token && <Mixed result={result} />}
+            {active === "one" && <Default result={result} />}
+            {active === "two" && token && <CenterFaced result={result} />}
+            {active === "three" && token && <LeftFaced result={result} />}
+            {active === "four" && token && <Mixed result={result} />}
 
         </div>
     )

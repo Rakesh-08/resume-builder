@@ -6,6 +6,7 @@ import WorkExperience from "./WorkExperience";
 import Templates from "./cvTemplates/templates";
 import Navbar from "../components/navbar/Navbar"
 import ErrorPage from "./ErrorPage";
+import { AuthContextValue } from "./authContext/AuthContext"
 
 
 export default function Home({ setResult }) {
@@ -17,11 +18,19 @@ export default function Home({ setResult }) {
     const [loading, setLoading] = useState(false);
     const [jobInfo, setJobInfo] = useState([""])
     const navigate = useNavigate();
+    let {active } = AuthContextValue();
 
 
 
     const handleFormSubmit = async(e) => {
         e.preventDefault();
+
+        if (active !== "one" && !localStorage.getItem("resumeToken")) {
+            alert("Please login first to explore these templates")
+            return
+         }
+
+
        setLoading(true)
         const formData = new FormData();
         formData.append("headshotImage", headshot, headshot.name);
@@ -37,7 +46,6 @@ export default function Home({ setResult }) {
             .then((res) => {
                 if (res.data.message) {
                     setResult(res.data.data)
-                    
                     navigate("/resume")
                 }
             })
@@ -121,9 +129,50 @@ setLoading(false)
                     </div>
                 </div>
             </div>
-            <div className="footer my-2">
-                <div>
+            <div className="vh-100 my-2">
+
+                <div className="d-flex flex-column align-items-center m-5 p-4 ">
+                    <div className="my-5" style={{ height: "0.2em", width: "60%", backgroundColor: "red", }}>
+
+                </div>
+                
+                    <div className=" w-100 d-flex justify-content-around   ">
+
+                        <div className=" position-relative  quote w-25 rounded-5 px-5">
+                            <h4 style={{position:"absolute", top:"40%"}}> Lets join hands to get Hired !</h4>
+
+                        </div>
+                        <img style={{ height: "20em", borderRadius: "40% 40% 5%", opacity: "0.9" }} src="https://media.istockphoto.com/id/812807718/vector/businesspeople-handshaking-after-negotiation-or-interview-at-office-productive-partnership.jpg?s=612x612&w=0&k=20&c=-s_zttzycCcdo1NO3wNqEwux1ImSWSx3M2a7shjgnM8=" alt="handShake logo" />
+                        
+                       
+                    </div>
+
+                  
                     
+                </div>
+                <div className="footer" >
+                    <div className ="d-flex justify-content-around">
+                    <div className=" f-note  w-25 p-4">
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                    </div>
+                    <div className=" f-note  w-25 p-4">
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                    </div>
+                    <div className=" f-note w-25 p-4">
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        <h6>Terms and conditions </h6>
+                        </div>
+                    </div>
+                    <h4 className="text-end text-dark mx-4   fs-6">copyrights Reserved @2023</h4>
                 </div>
 
             </div>
