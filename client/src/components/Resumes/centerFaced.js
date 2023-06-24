@@ -1,6 +1,6 @@
 
 export default function CenterFaced() {
     return (
-        <div>center oriented</div>
+        <div className="vh-100 d-flex justify-contents-center align-items-center">center oriented</div>
     )
 }

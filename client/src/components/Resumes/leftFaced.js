@@ -1,6 +1,6 @@
 
 export default function LeftFaced() {
     return (
-        <div>left faced</div>
+        <div className="vh-100 d-flex justify-contents-center align-items-center">left faced</div>
     )
 }
