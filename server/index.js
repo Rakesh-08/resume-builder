@@ -1,7 +1,7 @@
 let express = require("express");
 let expressApp = express();
 let cors = require("cors");
-let PORT = 8080;
+
 const multer = require("multer");
 const path = require("path");
 const { Configuration, OpenAIApi } = require("openai");
@@ -119,8 +119,8 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
 
 
 
-expressApp.listen(PORT, () => {
-    console.log("your server is listening at port : " + PORT)
+expressApp.listen (process.env.PORT, () => {
+    console.log("your server is listening at port : " + process.env.PORT)
 })
 
 
