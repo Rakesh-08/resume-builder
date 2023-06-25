@@ -119,7 +119,7 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
 
 
 
-expressApp.listen(process.env.PORT, () => {
+expressApp.listen(process.env.PORT || PORT, () => {
     console.log("your server is listening at port : " + process.env.PORT)
 })
 
