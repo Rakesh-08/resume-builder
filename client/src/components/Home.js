@@ -40,7 +40,12 @@ export default function Home({ setResult }) {
         formData.append("currentTechnologies", currentTechnologies);
         formData.append("workHistory", JSON.stringify(jobInfo));
 
-        let base_url = "https://resume-building-app.onrender.com" || "localhost:8080"
+        let base_url;
+        if (process.env.NODE_ENV !== "production") {
+            base_url = "localhost:8080"
+        } else {
+            base_url= process.env.BASE_URL
+        }
 
       await  axios
           .post(base_url + "/resume/create", formData, {})
