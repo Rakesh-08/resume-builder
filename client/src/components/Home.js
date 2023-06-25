@@ -140,7 +140,7 @@ setLoading(false)
                     <div className=" w-100 d-flex justify-content-around   ">
 
                         <div className=" position-relative  quote w-25 rounded-5 px-5">
-                            <h4 style={{position:"absolute", top:"40%"}}> Lets join hands to get Hired !</h4>
+                            <h4 style={{position:"absolute", top:"40%"}}> Lets work together to get you Hired !</h4>
 
                         </div>
                         <img style={{ height: "20em", borderRadius: "40% 40% 5%", opacity: "0.9" }} src="https://media.istockphoto.com/id/812807718/vector/businesspeople-handshaking-after-negotiation-or-interview-at-office-productive-partnership.jpg?s=612x612&w=0&k=20&c=-s_zttzycCcdo1NO3wNqEwux1ImSWSx3M2a7shjgnM8=" alt="handShake logo" />
