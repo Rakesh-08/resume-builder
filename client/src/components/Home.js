@@ -41,11 +41,13 @@ export default function Home({ setResult }) {
         formData.append("workHistory", JSON.stringify(jobInfo));
 
         let base_url;
+        
         if (process.env.NODE_ENV !== "production") {
-            base_url = "localhost:8080"
+            base_url = "http://localhost:8080"
         } else {
             base_url= process.env.BASE_URL
         }
+       
 
       await  axios
           .post(base_url + "/resume/create", formData, {})
