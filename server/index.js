@@ -13,11 +13,13 @@ expressApp.use(express.json());
 expressApp.use(cors());
 expressApp.use("/uploads", express.static("uploads"));
 
+require("dotenv").config();
+
 let database = [];
 
 
 const config = new Configuration({
-    apiKey: process.env.OpenAIKey || secretConfig.openAiKey
+    apiKey: secretConfig.openAiKey
 })
 const openai = new OpenAIApi(config);
 
