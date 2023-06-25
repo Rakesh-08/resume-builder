@@ -18,20 +18,20 @@ export default function Home({ setResult }) {
     const [loading, setLoading] = useState(false);
     const [jobInfo, setJobInfo] = useState([""])
     const navigate = useNavigate();
-    let {active } = AuthContextValue();
+    let { active } = AuthContextValue();
 
 
 
-    const handleFormSubmit = async(e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         if (active !== "one" && !localStorage.getItem("resumeToken")) {
             alert("Please login first to explore these templates")
             return
-         }
+        }
 
 
-       setLoading(true)
+        setLoading(true)
         const formData = new FormData();
         formData.append("headshotImage", headshot, headshot.name);
         formData.append("fullName", fullName);
@@ -40,17 +40,9 @@ export default function Home({ setResult }) {
         formData.append("currentTechnologies", currentTechnologies);
         formData.append("workHistory", JSON.stringify(jobInfo));
 
-        let base_url;
-        
-        if (process.env.NODE_ENV !== "production") {
-            base_url = "http://localhost:8080"
-        } else {
-            base_url= process.env.BASE_URL
-        }
-       
 
-      await  axios
-          .post(base_url + "/resume/create", formData, {})
+        await axios
+            .post(`${process.env.BASE_URL}` || "http://localhost:8080"  + "/resume/create", formData, {})
             .then((res) => {
                 if (res.data.message) {
                     setResult(res.data.data)
