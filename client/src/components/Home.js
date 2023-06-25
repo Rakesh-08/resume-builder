@@ -42,7 +42,7 @@ export default function Home({ setResult }) {
 
 
       await  axios
-            .post("http://localhost:8080/resume/create", formData, {})
+          .post("https://resume-building-app.onrender.com" + "/resume/create", formData, {})
             .then((res) => {
                 if (res.data.message) {
                     setResult(res.data.data)

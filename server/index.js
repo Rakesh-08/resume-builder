@@ -17,7 +17,7 @@ let database = [];
 
 
 const config = new Configuration({
-    apiKey: secretConfig.openAiKey
+    apiKey: process.env.OpenAIKey || secretConfig.openAiKey
 })
 const openai = new OpenAIApi(config);
 
