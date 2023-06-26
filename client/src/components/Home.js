@@ -23,7 +23,7 @@ export default function Home({ setResult }) {
 
 
     const handleFormSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         if (active !== "one" && !localStorage.getItem("resumeToken")) {
             alert("Please login first to explore these templates")
