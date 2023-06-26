@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
         cb(null, "uploads");
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now())
+        cb(null, Date.now() + path.extname(file.originalname))
     },
 })
 
@@ -72,7 +72,7 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
     const newEntry = {
         id: generateID(),
         fullName,
-        image_url: `https://resume-building-app.onrender.com/uploads/${req.file.filename}`,
+        // image_url: `https://resume-building-app.onrender.com/uploads/${req.file.filename}`,
         currentPosition,
         currentLength,
         currentTechnologies,
