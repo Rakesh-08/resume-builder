@@ -42,7 +42,6 @@ export default function Home({ setResult }) {
 
         let baseUrl = process.env.NODE_ENV == "production" ? "https://resume-building-app.onrender.com" : "http://localhost:8080"
 
-        console.log(baseUrl)
 
         await axios
             .post(` ${baseUrl}/resume/create `, formData, {})
