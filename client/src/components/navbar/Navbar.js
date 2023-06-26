@@ -39,7 +39,7 @@ export default function Navbar() {
             </div>
             <div className="navbar  d-flex justify-content-end ">
             <div>
-                <button className="mx-4 border-0 bg-transparent text-white">Documentation</button>
+                <button className="mx-4 border-0 bg-transparent text-white"> <a href="https://github.com/Rakesh-08/resume-builder" target="_blank">Documentation</a></button>
             </div>
             <div className="border rounded-4 p-2" >
                 <button onClick={signupRoute} className={`authBtn ${login ? "" : "active"}`}>sign Up</button>
