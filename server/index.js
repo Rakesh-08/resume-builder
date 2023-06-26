@@ -68,11 +68,11 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
 
     const workArray = JSON.parse(workHistory);
 
-
+  console.log(req.file.filename)
     const newEntry = {
         id: generateID(),
         fullName,
-        image_url: `http://localhost:8080/uploads/${req.file.filename}`,
+        image_url: `https://resume-building-app.onrender.com/uploads/${req.file.filename}`,
         currentPosition,
         currentLength,
         currentTechnologies,
@@ -116,7 +116,7 @@ expressApp.post("/resume/create", upload.single("headshotImage"), async (req, re
 
 })
 
-
+console.log(process.env.PORT)
 
 
 expressApp.listen(process.env.PORT || PORT, () => {
