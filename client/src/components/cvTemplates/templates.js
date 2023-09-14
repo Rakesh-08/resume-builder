@@ -19,9 +19,9 @@ export default function Templates() {
         <div className="tempContainer">
            <h4 className='text-center mb-2 '>Templates</h4>
           
-            <div className=" m-2 p-1">
+            <div className="  m-2 p-1">
 
-                <div className="my-2">
+                <div className="m-2">
                     <h6>default</h6>
                     <div onClick={()=>setActiveClass("one")}  className={`template bg-info ${selectedTemplate.one}`}>
                         <div className="d-flex justify-content-between p-3">
@@ -41,7 +41,7 @@ export default function Templates() {
                         <div style={{height:"0.5em"}} className=" bg-success m-2"></div>
                     </div>
                 </div>
-                <div className="my-2">
+                <div className="m-2">
                     <h6>Left-faced</h6>
                     <div onClick={() => setActiveClass("two")}  className={`template bg-dark d-flex ${selectedTemplate.two}`} >
                         <div className=" p-3">
@@ -73,7 +73,7 @@ export default function Templates() {
                        
                     </div>
                 </div>
-                <div className="my-2">
+                <div className="m-2">
                     <h6>Centered-focus</h6>
                     <div onClick={()=>setActiveClass("three")} className={`template bg-danger ${selectedTemplate.three}`}>
                         <div className="d-flex justify-content-center align-items-center flex-column p-2">
@@ -92,7 +92,7 @@ export default function Templates() {
                        
                     </div>
                 </div>
-                <div className="my-2">
+                <div className="m-2">
                     
                     <h6>Mixed</h6>
                     <div onClick={() => setActiveClass("four")}  className={`template bg-success ${selectedTemplate.four}`}>

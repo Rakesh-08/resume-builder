@@ -33,18 +33,22 @@ export default function Navbar() {
 
     return (
 
-        <div className="d-flex justify-content-between p-3">
-            <div className="mx-5 px-5"   >
+        <div className="d-flex  justify-content-between align-items-center p-2">
+            <div className="mx-2 px-3 "   >
                 <img style={{ height: "4em",marginBottom:"1em" }} src="https://www.conovercompany.com/wp-content/uploads/2019/06/wr-resumes-logo.png" alt="logo"/>
             </div>
-            <div className="navbar  d-flex justify-content-end ">
-            <div>
-                <button className="mx-4 border-0 bg-transparent text-white"> <a href="https://github.com/Rakesh-08/resume-builder" target="_blank">Documentation</a></button>
-            </div>
+            <div className="d-flex   justify-content-end ">
+                <div className="d-flex    mx-2">
+   <button className="m-2 border-0 bg-transparent "> <a
+                        style={{textDecoration:"none",color:"white"}} href="https://github.com/Rakesh-08/resume-builder" target="_blank">Documentation</a></button>
+            
             <div className="border rounded-4 p-2" >
                 <button onClick={signupRoute} className={`authBtn ${login ? "" : "active"}`}>sign Up</button>
                 <button onClick={loginRoute} className={`authBtn ${login?"active":""}`}>Login</button>
            </div>
+                </div>
+        
+                 
           
         </div>
 

@@ -1,6 +1,5 @@
-.BigContainer{
+body{
    
-     background-size: cover; 
      background-color:rgb(24, 6, 30);
      color:white
  }
@@ -91,6 +90,7 @@ button:active{
 }
  .work-exp{
         display: flex;
+        flex-wrap: wrap;
     }
 
 @media screen and (max-width:379px){
@@ -101,6 +101,13 @@ button:active{
         height: 49px;
         width: auto;
     }
+
+   .leftContainer{
+    display: none;
+   }
+   .leftContainer ~ div{
+     margin-left:  0 !important;;
+   }
    
 }
 
@@ -142,7 +149,6 @@ button:active{
 }
 .footer{
     background-color: rgb(114, 110, 110);
-    height: 30%;
     margin-top: 4em;
 }
 

@@ -1,9 +1,9 @@
 .tempContainer{
-    box-shadow:0.4em 0 rgb(202, 22, 218);
-    height: 100vh;
+    box-shadow:0.8em  0.4em 0.3em rgb(80, 36, 202);
     border-radius: 2%;
     padding:1em;
     color:black;
+    width: 100%;
    background-color:  rgb(222, 203, 245);
  
 }
