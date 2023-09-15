@@ -88,7 +88,7 @@ export default function LoginComponent() {
 
   return (
     <div className="bg-dark vh-100 d-flex justify-content-center align-items-center">
-      <div className="card  form-box rounded-4">
+      <div className="card mx-3  form-box rounded-4">
         <h3 className="my-4 text-center">{showSignup ? "Sign Up" : "Login"}</h3>
 
         <div className="ps-4">
