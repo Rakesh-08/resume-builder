@@ -177,7 +177,7 @@ setLoading(false)
                         <h6>Terms and conditions </h6>
                         </div>
                     </div>
-                    <h4 className="text-end text-dark mx-4   fs-6">copyrights Reserved @2023</h4>
+                    <h4 className="text-end text-dark mx-4   fs-6">copyrights @2023: Rakesh Mandal</h4>
                 </div>
 
             </div>

@@ -9,7 +9,7 @@ function App() {
 
   const [result,setResult]= useState({})
   return (
-    <div className='BigContainer'>
+  
       <BrowserRouter>
         
         <Routes>
@@ -18,7 +18,7 @@ function App() {
           <Route path="/auth/login" element={<LoginComponent/>}></Route>
         </Routes>
       </BrowserRouter>
-    </div>
+
   )
     
 }

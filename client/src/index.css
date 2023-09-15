@@ -1,5 +1,4 @@
 body{
-   
      background-color:rgb(24, 6, 30);
      color:white
  }
@@ -93,7 +92,7 @@ button:active{
         flex-wrap: wrap;
     }
 
-@media screen and (max-width:379px){
+@media screen and (max-width:479px){
     .nestedContainer{
         display: inline;
     }

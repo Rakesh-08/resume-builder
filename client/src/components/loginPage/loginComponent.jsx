@@ -88,14 +88,14 @@ export default function LoginComponent() {
 
   return (
     <div className="bg-dark vh-100 d-flex justify-content-center align-items-center">
-      <div className="card  p-5  form-box rounded-4">
+      <div className="card  form-box rounded-4">
         <h3 className="my-4 text-center">{showSignup ? "Sign Up" : "Login"}</h3>
 
-        <div>
+        <div className="ps-4">
           <form onSubmit={showSignup ? signup : login}>
             {showSignup && (
               <div className="  row">
-                <label className="col-4" htmlFor="name">
+                <label className="col-3 " htmlFor="name">
                   Name
                 </label>
                 <input
@@ -115,7 +115,7 @@ export default function LoginComponent() {
 
             {showSignup && (
               <div className=" row">
-                <label className="col-4" htmlFor="email">
+                <label className="col-3" htmlFor="email">
                   Email
                 </label>
                 <input
@@ -134,7 +134,7 @@ export default function LoginComponent() {
             )}
 
             <div className=" row">
-              <label className="col-4" htmlFor="userId">
+              <label className="col-3" htmlFor="userId">
                 userId
               </label>
               <input
@@ -151,7 +151,7 @@ export default function LoginComponent() {
               />
             </div>
             <div className=" row">
-              <label className="col-4" htmlFor="password">
+              <label className="col-3 p-1" htmlFor="password">
                 Password{" "}
               </label>
               <input
@@ -186,7 +186,7 @@ export default function LoginComponent() {
           </form>
         </div>
 
-        <div>
+        <div className="ps-4">
           <p className="my-2">
             {showSignup
               ? " Already have an account ?"
