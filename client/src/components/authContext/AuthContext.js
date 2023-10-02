@@ -1,7 +1,7 @@
 import { createContext, useState, useContext } from "react";
 
 let authContext = createContext(() => { });
-let initialState = { one: "", two: "", three: "", four: "" }
+let initialState = { one: "selected", two: "", three: "", four: "" }
 
 
 export default function AuthContext({ children }) {
