@@ -12,7 +12,7 @@ export default function Templates() {
             return
         }
 
-        setSelectedTemplate({...initialState,[value]:"selected"})
+        setSelectedTemplate({[value]:"selected"})
        
     }
     return (
